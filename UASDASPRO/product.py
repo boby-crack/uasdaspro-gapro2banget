@@ -25,7 +25,7 @@ def welcome():
             print("terimah telah berkunjung ke toko SixSport")
             break
         else:
-            print("masukkin yang bener goblog")
+            print("masukkin yang bener boskuhh")
 
 
 def loginAdmin():
@@ -66,7 +66,7 @@ def adminPage():
         elif menu == 5:
             welcome()
         else:
-            print("masukkin yang bener goblog")
+            print("masukkin yang bener boskuhh")
 
 
 product_template = {
@@ -150,7 +150,11 @@ def userLihatProduk():
     else:
         print('===============================')
         print('maaf produk sedang kosong')
-        welcome()
+        back = input("ketikkan apa saja untuk kembali:")
+        if back != "":
+            welcome()
+        else:
+            welcome()
 
 
 def beliProduk():
@@ -166,9 +170,16 @@ def beliProduk():
         print(f"stok produk :{STOK}")
         print("===========================================================")
         if STOK > 0:
+            namaPembeli = input("Masukkan nama Anda: ")
+            nohp = input("Masukkan No.Hp Anda: ")
+            alamat = input("Masukkan alamat Anda: ")
             beli = int(input("ingin beli berapa : "))
             if beli <= STOK:
                 total = beli * int(data_product[key]['harga_produk'])
+                print(f"NAMA :{namaPembeli}")
+                print(f"NO.HP :{nohp}")
+                print(f"ALAMAT :{alamat}")
+                print(f"beli :{beli} pcs")
                 print(f'total belanja anda {total}')
                 bayar = int(input("masukan nominal uang anda : "))
                 sisa_stok = int(data_product[key]['stok_produk']) - beli
@@ -176,21 +187,32 @@ def beliProduk():
                 print("===========================================================")
                 print("                  Hasil checkout                           ")
                 print("===========================================================")
-                print(f'anda bayar :{bayar}')
                 if total == bayar:
                     print("uang anda pas")
                 elif total > bayar:
                     print('uang anda kurang')
-                    print('kembali ke halaman home')
-                    welcome()
+                    back = input("ketikkan apa saja untuk kembali:")
+                    if back != "":
+                        beliProduk()
+
                 elif total < bayar:
                     kembalian = bayar-total
-                    print(f'kembalian anda : {kembalian}')
-                print(f'anda membeli : {beli} item')
-                print(f'harga satuan barang : {HARGA}')
+
+                print(f"Nama :{namaPembeli}")
+                print(f"No.HP :{nohp}")
+                print(f"Alamat :{alamat}")
                 print(f'barang yang di beli : {NAMA}')
+                print(f'harga satuan barang : {HARGA}')
+                print(f'anda membeli : {beli} item')
                 print(f'total harga yang di beli : {total}')
+                print(f'uang anda : {bayar}')
+                print(f'kembalian anda : {kembalian}')
                 print("===========================================================")
+                print("                  Terima kasih atas Pembelian anda         ")
+                back = input("ketikkan apa saja untuk kembali:")
+                if back != "":
+                    welcome()
+
             else:
                 print("===========================================================")
                 print('pembelian melebihi stok')
@@ -213,7 +235,14 @@ def beliProduk():
                 welcome()
     else:
         print("key tidak ditemukan")
-        welcome()
+        ulang = input(
+            "apakah anda ingin ulang transaksi pembelian (y/n) : ")
+        if ulang == "y":
+            beliProduk()
+        else:
+            print("kembali ke halaman home")
+            userLihatProduk()
+            welcome()
 
 
 def editProduk():
@@ -304,13 +333,13 @@ def editProduk():
                         print("anda tidak mengubah apapun")
                         editProduk()
                     else:
-                        print("masukkin yang bener goblog")
+                        print("masukkin yang bener boskuhh")
                         editProduk()
                 else:
-                    print("masukkin yang bener goblog")
+                    print("masukkin yang bener boskuhh")
                     editProduk()
             else:
-                print("masukkin yang bener goblog")
+                print("masukkin yang bener boskuhh")
                 editProduk()
         else:
             print("key tidak ditemukan")
@@ -343,7 +372,7 @@ def hapusProduk():
     elif hapus == "n":
         adminPage()
     else:
-        print("masukkin yang bener goblog")
+        print("masukkin yang bener boskuhh")
         hapusProduk()
 
 
