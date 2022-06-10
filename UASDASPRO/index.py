@@ -5,7 +5,7 @@ import pandas as pd
 list_namaMenu = []
 list_hargaMenu = []
 list_quantityMenu = []
-
+id=0
 
 def selamatDatang():
     while True:
@@ -27,7 +27,7 @@ def selamatDatang():
             lihatMenuUser()
         elif menu == 3:
             print("Anda Berhasil Keluar Dari Sistem")
-            print("terimah telah berkunjung ke toko SixSport")
+            print("terimah telah berkunjung ke toko Sixpacks")
             break
         else:
             print("masukkin yang bener boskuhh")
@@ -155,7 +155,7 @@ def editMenu():
 
     print(df)
 
-    idMenu = int(input("Masukkan id Menu yang ingin anda beli : "))
+    idMenu = int(input("Masukkan id Menu yang ingin anda edit : "))
     isi = len(list_namaMenu)
     loop = 0
 
@@ -386,27 +386,13 @@ def lihatMenuUser():
         beliMenu()
         print("===========================================================")
     elif beli.lower() == "n":
-        print("Terimah telah berkunjung ke toko SixSport")
+        print("Terima kasih telah berkunjung ke toko Sixpacks")
     else:
         print("masukkin yang bener boskuhh")
 
 
 def beliMenu():
-
     print("===========================================================")
-    print("                  Lihat Menu                             ")
-    print("===========================================================")
-
-    product = {
-        "Nama ": list_namaMenu,
-        "Harga ": list_hargaMenu,
-        "kuantitas ": list_quantityMenu
-
-    }
-
-    df = pd.DataFrame(product)
-
-    print(df)
 
     idMenu = int(input("Masukkan id Menu yang ingin anda beli : "))
     isi = len(list_namaMenu)
@@ -414,20 +400,62 @@ def beliMenu():
     while True:
         if idMenu == loop:
             print("===========================================================")
-            print("                  Menu Berhasil Dibeli                  ")
+            print("                  Produk yang anda pilih                  ")
             print("===========================================================")
             print("Nama Menu : ", list_namaMenu[idMenu])
             print("Harga Menu : ", list_hargaMenu[idMenu])
             print("kuantitas Menu : ", list_quantityMenu[idMenu])
             print("===========================================================")
-            print("Menu Berhasil Dibeli")
-            print("===========================================================")
-            confirm = input('apakah yakin ingin beli ? (y/n)')
+            confirm = input('apakah yakin ingin beli ? (y/n) : ')
             if confirm == "n":
-                break
+                selamatDatang()
+            elif confirm == "y":
+                checkout()
         elif idMenu > isi:
             print('data tidak ditemukan')
         loop += 1
 
+def checkout():
+    nama=input("nama anda : ")
+    email=input("email anda : ")
+    jumlah_beli=int(input("masukan jumlah beli : "))
+    idCheckout = id
+    isi = len(list_namaMenu)
+    loop = 0
+    while True:
+        if idCheckout == loop:
+            print("===========================================================")
+            print("                  Hasil Checkout                  ")
+            print("===========================================================")
+            print("Nama Menu : ", list_namaMenu[idCheckout])
+            print("Harga Menu : ", list_hargaMenu[idCheckout])
+            print("Nama Pembeli : ", nama)
+            print("Email Pembeli : ", email)
+            print("Jumlah beli : ", jumlah_beli)
+            total=int(list_hargaMenu[idCheckout]) * jumlah_beli
+            list_quantityMenu[idCheckout]=int(list_quantityMenu[idCheckout])-jumlah_beli
+            print("Total harga : ", total)
+            bayar=int(input('masukan uang anda : '))
+            if total == bayar:
+                    print("uang anda pas : ",bayar)
+            elif total > bayar:
+                print('uang anda kurang')
+                back = input("ketikkan apa saja untuk kembali:")
+                if back != "":
+                    lihatMenuUser()
+            elif total < bayar:
+                kembalian = bayar-total
+                print(f'kembalian anda : {kembalian}')
+            print("===========================================================")
+            print("                  Pembelian Berhasil                       ")
+            print("===========================================================")
+            confirm = input('apakah ingin melihat produk lagi ? (y/n) : ')
+            if confirm == "n":
+                selamatDatang()
+            elif confirm == "y":
+                lihatMenuUser()
+        elif idCheckout > isi:
+            print('data tidak ditemukan')
+        loop += 1
 
 selamatDatang()
