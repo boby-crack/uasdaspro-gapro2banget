@@ -215,42 +215,46 @@ def beliMenu():
     isi = len(list_namaMenu)
     loop = 0
     while True:
-        if idMenu == loop:
+        if idMenu > isi:
+            print('data tidak ditemukan')
+        else:
             print("===========================================================")
             print("                  Produk yang anda pilih                  ")
             print("===========================================================")
-            print("Nama Menu : ", list_namaMenu[idMenu])
-            print("Harga Menu : ", list_hargaMenu[idMenu])
-            print("kuantitas Menu : ", list_quantityMenu[idMenu])
+            print("Nama Menu : ", list_namaMenu[loop])
+            print("Harga Menu : ", list_hargaMenu[loop])
+            print("kuantitas Menu : ", list_quantityMenu[loop])
             print("===========================================================")
             confirm = input('apakah yakin ingin beli ? (y/n) : ')
             if confirm == "n":
                 selamatDatang()
             elif confirm == "y":
                 checkout()
-        elif idMenu > isi:
-            print('data tidak ditemukan')
+       
         loop += 1
 
 def checkout():
     nama=input("nama anda : ")
     email=input("email anda : ")
     jumlah_beli=int(input("masukan jumlah beli : "))
-    idCheckout = id
+    idMenu = int(input("Masukkan id Menu yang ingin anda beli : "))
     isi = len(list_namaMenu)
     loop = 0
     while True:
-        if idCheckout == loop:
+        if idMenu > isi :
+            print('data tidak ditemukan')
+            selamatDatang()
+        else:
             print("===========================================================")
             print("                  Hasil Checkout                  ")
             print("===========================================================")
-            print("Nama Menu : ", list_namaMenu[idCheckout])
-            print("Harga Menu : ", list_hargaMenu[idCheckout])
+            print("Nama Menu : ", list_namaMenu[loop])
+            print("Harga Menu : ", list_hargaMenu[loop])
             print("Nama Pembeli : ", nama)
             print("Email Pembeli : ", email)
             print("Jumlah beli : ", jumlah_beli)
-            total=int(list_hargaMenu[idCheckout]) * jumlah_beli
-            list_quantityMenu[idCheckout]=int(list_quantityMenu[idCheckout])-jumlah_beli
+            total=int(list_hargaMenu[loop]) * jumlah_beli
+            list_quantityMenu[loop]=int(list_quantityMenu[loop])-jumlah_beli
             print("Total harga : ", total)
             bayar=int(input('masukan uang anda : '))
             if total == bayar:
@@ -271,9 +275,7 @@ def checkout():
                 selamatDatang()
             elif confirm == "y":
                 lihatMenuUser()
-        elif idCheckout > isi:
-            print('data tidak ditemukan')
-            selamatDatang()
+            
         loop += 1
 
 selamatDatang()
