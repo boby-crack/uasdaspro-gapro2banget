@@ -52,9 +52,8 @@ def adminPage():
         print("===========================================================")
         print("1 - tambah Menu")
         print("2 - Lihat list Menu")
-        print("3 - Edit Menu")
-        print("4 - Hapus Menu")
-        print("5 - logout admin")
+        print("3 - Hapus Menu")
+        print("4 - logout admin")
 
         menu = int(
             input("Silahkan Pilih Menu Untuk Melanjutkan Proses Transaksi :"))
@@ -63,11 +62,11 @@ def adminPage():
             tambahMenu()
         elif menu == 2:
             lihatMenuAdmin()
+        # elif menu == 3:
+        #     editMenu()
         elif menu == 3:
-            editMenu()
-        elif menu == 4:
             hapusMenu()
-        elif menu == 5:
+        elif menu == 4:
             selamatDatang()
         else:
             print("masukkin yang bener boskuhh")
@@ -139,195 +138,7 @@ def lihatMenuAdmin():
         adminPage()
 
 
-def editMenu():
-    print("===========================================================")
-    print("                  Edit Menu                             ")
-    print("===========================================================")
 
-    product = {
-        "Nama ": list_namaMenu,
-        "Harga ": list_hargaMenu,
-        "kuantitas ": list_quantityMenu
-
-    }
-
-    df = pd.DataFrame(product)
-
-    print(df)
-
-    idMenu = int(input("Masukkan id Menu yang ingin anda edit : "))
-    isi = len(list_namaMenu)
-    loop = 0
-
-    while idMenu < isi:
-        if idMenu == loop:
-            print("Nama Menu : ", list_namaMenu[idMenu])
-            print("Harga Menu : ", list_hargaMenu[idMenu])
-            print("kuantitas Menu : ", list_quantityMenu[idMenu])
-            editNama = input('apakah ingin merubah nama Menu ? (y/n)')
-            if editNama.lower() == "y":
-                list_namaMenu[idMenu] = input("Masukkan nama Menu : ")
-                editHarga = input('apakah ingin merubah harga Menu ? (y/n)')
-                if editHarga.lower() == "y":
-                    list_hargaMenu[idMenu] = int(
-                        input("Masukkan harga Menu : "))
-                    editQuantity = input(
-                        'apakah ingin merubah kuantitas Menu ? (y/n)')
-                    if editQuantity.lower() == "y":
-                        list_quantityMenu[idMenu] = input(
-                            "Masukkan kuantitas Menu : ")
-                        print(
-                            "===========================================================")
-                        print(
-                            "                  Menu Berhasil Diedit                 ")
-                        print(
-                            "===========================================================")
-                        hold = input(
-                            "Tekan apa saja Untuk melihat list menu terbaru : ")
-                        if hold != "":
-                            lihatMenuAdmin()
-                    elif editQuantity.lower() == "n":
-                        print(
-                            "===========================================================")
-                        print(
-                            "                  Menu Berhasil Diedit                 ")
-                        print(
-                            "===========================================================")
-                        hold = input(
-                            "Tekan apa saja Untuk melihat list menu terbaru : ")
-                        if hold != "":
-                            lihatMenuAdmin()
-                    else:
-                        print("masukkin yang bener boskuhh")
-                        hold = input(
-                            "Tekan apa saja Untuk Kembali : ")
-                        if hold != "":
-                            adminPage()
-                elif editHarga.lower() == "n":
-                    editQuantity = input(
-                        'apakah ingin merubah kuantitas Menu ? (y/n)')
-                    if editQuantity.lower() == "y":
-                        list_quantityMenu[idMenu] = input(
-                            "Masukkan kuantitas Menu : ")
-                        print(
-                            "===========================================================")
-                        print(
-                            "                  Menu Berhasil Diedit                 ")
-                        print(
-                            "===========================================================")
-                        hold = input(
-                            "Tekan apa saja Untuk melihat list menu terbaru : ")
-                        if hold != "":
-                            lihatMenuAdmin()
-                    elif editQuantity.lower() == "n":
-                        print(
-                            "===========================================================")
-                        print(
-                            "                  Menu Berhasil Diedit                 ")
-                        print(
-                            "===========================================================")
-                        hold = input(
-                            "Tekan apa saja Untuk melihat list menu terbaru : ")
-                        if hold != "":
-                            lihatMenuAdmin()
-                    else:
-                        print("masukkin yang bener boskuhh")
-                        hold = input(
-                            "Tekan apa saja Untuk Kembali : ")
-                        if hold != "":
-                            adminPage()
-                else:
-                    print("masukkin yang bener boskuhh")
-                    hold = input(
-                        "Tekan apa saja Untuk Kembali : ")
-                    if hold != "":
-                        adminPage()
-            elif editNama.lower() == "n":
-                editHarga = input('apakah ingin merubah harga Menu ? (y/n)')
-                if editHarga.lower() == "y":
-                    list_hargaMenu[idMenu] = int(
-                        input("Masukkan harga Menu : "))
-                    editQuantity = input(
-                        'apakah ingin merubah kuantitas Menu ? (y/n)')
-                    if editQuantity.lower() == "y":
-                        list_quantityMenu[idMenu] = input(
-                            "Masukkan kuantitas Menu : ")
-                        print(
-                            "===========================================================")
-                        print(
-                            "                  Menu Berhasil Diedit                 ")
-                        print(
-                            "===========================================================")
-                        hold = input(
-                            "Tekan apa saja Untuk melihat list menu terbaru : ")
-                        if hold != "":
-                            lihatMenuAdmin()
-                    elif editQuantity.lower() == "n":
-                        print(
-                            "===========================================================")
-                        print(
-                            "                  Menu Berhasil Diedit                 ")
-                        print(
-                            "===========================================================")
-                        hold = input(
-                            "Tekan apa saja Untuk melihat list menu terbaru : ")
-                        if hold != "":
-                            lihatMenuAdmin()
-                    else:
-                        print("masukkin yang bener boskuhh")
-                        hold = input(
-                            "Tekan apa saja Untuk Kembali : ")
-                        if hold != "":
-                            adminPage()
-                elif editHarga.lower() == "n":
-                    editQuantity = input(
-                        'apakah ingin merubah kuantitas Menu ? (y/n)')
-                    if editQuantity.lower() == "y":
-                        list_quantityMenu[idMenu] = input(
-                            "Masukkan kuantitas Menu : ")
-                        print(
-                            "===========================================================")
-                        print(
-                            "                  Menu Berhasil Diedit                 ")
-                        print(
-                            "===========================================================")
-                        hold = input(
-                            "Tekan apa saja Untuk melihat list menu terbaru : ")
-                        if hold != "":
-                            lihatMenuAdmin()
-                    elif editQuantity.lower() == "n":
-                        print(
-                            "===========================================================")
-                        print(
-                            "                  Menu Berhasil Diedit                 ")
-                        print(
-                            "===========================================================")
-                        hold = input(
-                            "Tekan apa saja Untuk melihat list menu terbaru : ")
-                        if hold != "":
-                            lihatMenuAdmin()
-                    else:
-                        print("masukkin yang bener boskuhh")
-                        hold = input(
-                            "Tekan apa saja Untuk Kembali : ")
-                        if hold != "":
-                            adminPage()
-                else:
-                    print("masukkin yang bener boskuhh")
-                    hold = input(
-                        "Tekan apa saja Untuk Kembali : ")
-                    if hold != "":
-                        adminPage()
-            else:
-                print("masukkin yang bener boskuhh")
-                hold = input(
-                    "Tekan apa saja Untuk Kembali : ")
-                if hold != "":
-                    adminPage()
-            break
-        elif idMenu > isi:
-            print('data tidak ditemukan')
-        loop += 1
 
 
 def hapusMenu():
@@ -378,8 +189,14 @@ def lihatMenuUser():
     }
 
     df = pd.DataFrame(product)
+    if list_namaMenu != []:
+        print(df)
+    else:
+        print('Maaf produk sedang kosong')
+        confirm=input('kembali ke halaman home (y/n) : ')
+        selamatDatang()
 
-    print(df)
+
 
     beli = input("Apakah anda ingin membeli (y/n) : ")
     if beli.lower() == "y":
@@ -456,6 +273,203 @@ def checkout():
                 lihatMenuUser()
         elif idCheckout > isi:
             print('data tidak ditemukan')
+            selamatDatang()
         loop += 1
 
 selamatDatang()
+
+
+
+
+
+
+
+# def editMenu():
+#     print("===========================================================")
+#     print("                  Edit Menu                             ")
+#     print("===========================================================")
+
+#     product = {
+#         "Nama ": list_namaMenu,
+#         "Harga ": list_hargaMenu,
+#         "kuantitas ": list_quantityMenu
+
+#     }
+
+#     df = pd.DataFrame(product)
+
+#     print(df)
+
+#     idMenu = int(input("Masukkan id Menu yang ingin anda edit : "))
+#     isi = len(list_namaMenu)
+#     loop = 0
+
+#     while idMenu < isi:
+#         if idMenu == loop:
+#             print("Nama Menu : ", list_namaMenu[idMenu])
+#             print("Harga Menu : ", list_hargaMenu[idMenu])
+#             print("kuantitas Menu : ", list_quantityMenu[idMenu])
+#             editNama = input('apakah ingin merubah nama Menu ? (y/n)')
+#             if editNama.lower() == "y":
+#                 list_namaMenu[idMenu] = input("Masukkan nama Menu : ")
+#                 editHarga = input('apakah ingin merubah harga Menu ? (y/n)')
+#                 if editHarga.lower() == "y":
+#                     list_hargaMenu[idMenu] = int(
+#                         input("Masukkan harga Menu : "))
+#                     editQuantity = input(
+#                         'apakah ingin merubah kuantitas Menu ? (y/n)')
+#                     if editQuantity.lower() == "y":
+#                         list_quantityMenu[idMenu] = input(
+#                             "Masukkan kuantitas Menu : ")
+#                         print(
+#                             "===========================================================")
+#                         print(
+#                             "                  Menu Berhasil Diedit                 ")
+#                         print(
+#                             "===========================================================")
+#                         hold = input(
+#                             "Tekan apa saja Untuk melihat list menu terbaru : ")
+#                         if hold != "":
+#                             lihatMenuAdmin()
+#                     elif editQuantity.lower() == "n":
+#                         print(
+#                             "===========================================================")
+#                         print(
+#                             "                  Menu Berhasil Diedit                 ")
+#                         print(
+#                             "===========================================================")
+#                         hold = input(
+#                             "Tekan apa saja Untuk melihat list menu terbaru : ")
+#                         if hold != "":
+#                             lihatMenuAdmin()
+#                     else:
+#                         print("masukkin yang bener boskuhh")
+#                         hold = input(
+#                             "Tekan apa saja Untuk Kembali : ")
+#                         if hold != "":
+#                             adminPage()
+#                 elif editHarga.lower() == "n":
+#                     editQuantity = input(
+#                         'apakah ingin merubah kuantitas Menu ? (y/n)')
+#                     if editQuantity.lower() == "y":
+#                         list_quantityMenu[idMenu] = input(
+#                             "Masukkan kuantitas Menu : ")
+#                         print(
+#                             "===========================================================")
+#                         print(
+#                             "                  Menu Berhasil Diedit                 ")
+#                         print(
+#                             "===========================================================")
+#                         hold = input(
+#                             "Tekan apa saja Untuk melihat list menu terbaru : ")
+#                         if hold != "":
+#                             lihatMenuAdmin()
+#                     elif editQuantity.lower() == "n":
+#                         print(
+#                             "===========================================================")
+#                         print(
+#                             "                  Menu Berhasil Diedit                 ")
+#                         print(
+#                             "===========================================================")
+#                         hold = input(
+#                             "Tekan apa saja Untuk melihat list menu terbaru : ")
+#                         if hold != "":
+#                             lihatMenuAdmin()
+#                     else:
+#                         print("masukkin yang bener boskuhh")
+#                         hold = input(
+#                             "Tekan apa saja Untuk Kembali : ")
+#                         if hold != "":
+#                             adminPage()
+#                 else:
+#                     print("masukkin yang bener boskuhh")
+#                     hold = input(
+#                         "Tekan apa saja Untuk Kembali : ")
+#                     if hold != "":
+#                         adminPage()
+#             elif editNama.lower() == "n":
+#                 editHarga = input('apakah ingin merubah harga Menu ? (y/n)')
+#                 if editHarga.lower() == "y":
+#                     list_hargaMenu[idMenu] = int(
+#                         input("Masukkan harga Menu : "))
+#                     editQuantity = input(
+#                         'apakah ingin merubah kuantitas Menu ? (y/n)')
+#                     if editQuantity.lower() == "y":
+#                         list_quantityMenu[idMenu] = input(
+#                             "Masukkan kuantitas Menu : ")
+#                         print(
+#                             "===========================================================")
+#                         print(
+#                             "                  Menu Berhasil Diedit                 ")
+#                         print(
+#                             "===========================================================")
+#                         hold = input(
+#                             "Tekan apa saja Untuk melihat list menu terbaru : ")
+#                         if hold != "":
+#                             lihatMenuAdmin()
+#                     elif editQuantity.lower() == "n":
+#                         print(
+#                             "===========================================================")
+#                         print(
+#                             "                  Menu Berhasil Diedit                 ")
+#                         print(
+#                             "===========================================================")
+#                         hold = input(
+#                             "Tekan apa saja Untuk melihat list menu terbaru : ")
+#                         if hold != "":
+#                             lihatMenuAdmin()
+#                     else:
+#                         print("masukkin yang bener boskuhh")
+#                         hold = input(
+#                             "Tekan apa saja Untuk Kembali : ")
+#                         if hold != "":
+#                             adminPage()
+#                 elif editHarga.lower() == "n":
+#                     editQuantity = input(
+#                         'apakah ingin merubah kuantitas Menu ? (y/n)')
+#                     if editQuantity.lower() == "y":
+#                         list_quantityMenu[idMenu] = input(
+#                             "Masukkan kuantitas Menu : ")
+#                         print(
+#                             "===========================================================")
+#                         print(
+#                             "                  Menu Berhasil Diedit                 ")
+#                         print(
+#                             "===========================================================")
+#                         hold = input(
+#                             "Tekan apa saja Untuk melihat list menu terbaru : ")
+#                         if hold != "":
+#                             lihatMenuAdmin()
+#                     elif editQuantity.lower() == "n":
+#                         print(
+#                             "===========================================================")
+#                         print(
+#                             "                  Menu Berhasil Diedit                 ")
+#                         print(
+#                             "===========================================================")
+#                         hold = input(
+#                             "Tekan apa saja Untuk melihat list menu terbaru : ")
+#                         if hold != "":
+#                             lihatMenuAdmin()
+#                     else:
+#                         print("masukkin yang bener boskuhh")
+#                         hold = input(
+#                             "Tekan apa saja Untuk Kembali : ")
+#                         if hold != "":
+#                             adminPage()
+#                 else:
+#                     print("masukkin yang bener boskuhh")
+#                     hold = input(
+#                         "Tekan apa saja Untuk Kembali : ")
+#                     if hold != "":
+#                         adminPage()
+#             else:
+#                 print("masukkin yang bener boskuhh")
+#                 hold = input(
+#                     "Tekan apa saja Untuk Kembali : ")
+#                 if hold != "":
+#                     adminPage()
+#             break
+#         elif idMenu > isi:
+#             print('data tidak ditemukan')
+#         loop += 1
